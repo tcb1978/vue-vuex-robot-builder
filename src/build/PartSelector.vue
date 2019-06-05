@@ -30,6 +30,7 @@ export default {
       validator: (value) => ['left', 'right', 'top', 'bottom', 'center'].includes(value),
     }
   },
+
   data() {
     return { selectedPartIndex: 0 };
   },
@@ -46,12 +47,14 @@ export default {
         this.selectedPartIndex,
         this.parts.length,
       );
+      this.$emit('partSelected', this.selectedPart);
     },
     selectPreviousPart() {
       this.selectedPartIndex = getPreviousValidIndex(
         this.selectedPartIndex,
         this.parts.length,
       );
+      this.$emit('partSelected', this.selectedPart);
     },
 
   },
