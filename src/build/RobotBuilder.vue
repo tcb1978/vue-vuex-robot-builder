@@ -1,11 +1,26 @@
 <template>
   <div class="content">
-    <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
+    <div class="preview">
+      <div class="preview-content">
+        <figure class="top-row">
+          <img :src="selectedRobot.head.src"/>
+        </figure>
+        <div class="middle-row">
+          <figure><img :src="selectedRobot.leftArm.src" class="rotate-left"/></figure>
+          <figure><img :src="selectedRobot.torso.src"/></figure>
+          <figure><img :src="selectedRobot.rightArm.src" class="rotate-right"/></figure>
+        </div>
+        <figure class="bottom-row">
+          <img :src="selectedRobot.base.src"/>
+        </figure>
+      </div>
+      <button class="add-to-cart" @click="addToCart()">Add to Cart</button>
+    </div>
     <div class="top-row">
-      <!--<div class="robot-name">
+      <div class="robot-name">
         {{ selectedRobot.head.title }}
         <span v-if="selectedRobot.head.onSale" class="sale">Sale!</span>
-      </div>-->
+      </div>
       <PartSelector :parts="availableParts.heads" position="top" @partSelected="part => selectedRobot.head=part"/>
     </div>
     <div class="middle-row">
@@ -86,17 +101,38 @@ export default {
 </script>
 
 <style lang="scss">
+.preview {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 210px;
+  height: 210px;
+  padding: 5px;
+}
+.preview-content {
+  border: 1px solid #999;
+}
+.preview {
+  img {
+  width: 50px;
+  height: 50px;
+  }
+}
+.rotate-right {
+  transform: rotate(90deg);
+}
+.rotate-left {
+  transform: rotate(-90deg);
+}
 .part {
   position: relative;
   width:165px;
   height:165px;
   border: 3px solid #aaa;
+
+  width:165px;
 }
-.part {
-  img {
-    width:165px;
-  }
-}
+
 .top-row {
   display:flex;
   justify-content: space-around;
@@ -113,18 +149,50 @@ export default {
 .head {
   border-bottom: none;
 }
-.left {
-  border-right: none;
-}
 .right {
   border-left: none;
+
+   img {
+    transform: rotate(90deg);
+  }
+
+  .prev-selector {
+    top: -28px;
+    left: 24px;
+    width: 144px;
+    height: 25px;
+  }
+  .next-selector {
+    top: auto;
+    bottom: -28px;
+    left: 24px;
+    width: 144px;
+    height: 25px;
+  }
+  .next-selector {
+    right: -3px;
+  }
 }
-.left img {
-  transform: rotate(-90deg);
+.left {
+    border-right: none;
+  img {
+    transform: rotate(-90deg);
+  }
+  .prev-selector {
+    top: -28px;
+    left: -3px;
+    width: 144px;
+    height: 25px;
+  }
+  .next-selector {
+    top: auto;
+    bottom: -28px;
+    left: -3px;
+    width: 144px;
+    height: 25px;
+  }
 }
-.right img {
-  transform: rotate(90deg);
-}
+
 .bottom {
   border-top: none;
 }
@@ -147,35 +215,6 @@ export default {
 .center .prev-selector, .center .next-selector {
   opacity:0.8;
 }
-.left .prev-selector {
-  top: -28px;
-  left: -3px;
-  width: 144px;
-  height: 25px;
-}
-.left .next-selector {
-  top: auto;
-  bottom: -28px;
-  left: -3px;
-  width: 144px;
-  height: 25px;
-}
-.right .prev-selector {
-  top: -28px;
-  left: 24px;
-  width: 144px;
-  height: 25px;
-}
-.right .next-selector {
-  top: auto;
-  bottom: -28px;
-  left: 24px;
-  width: 144px;
-  height: 25px;
-}
-.right .next-selector {
-  right: -3px;
-}
 .robot-name {
   position: absolute;
   top: -25px;
@@ -186,14 +225,13 @@ export default {
   color: red;
 }
 .content {
-  postition: relative;
+  position: relative;
 }
 .add-to-cart {
   font-size: 1em;
   position: absolute;
-  right: 30px;
   padding: 3px;
-  width: 14rem;
+  width: 210px;
 }
 
 td, th {

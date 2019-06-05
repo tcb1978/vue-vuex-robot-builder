@@ -36,6 +36,12 @@ body {
   background-attachment: fixed;
 }
 
+figure {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+}
+
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
 }
