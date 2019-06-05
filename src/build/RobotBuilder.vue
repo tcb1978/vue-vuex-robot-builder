@@ -58,6 +58,7 @@
 
 <script>
 import availableParts from '../data/parts';
+import createdHookMixin from './created-hook-mixin';
 
 const getNextValidIndex = (index, length) => {
   const incrementedIndex = index + 1;
@@ -70,7 +71,8 @@ const getPreviousValidIndex = (index, length) => {
 }
 
 export default {
-  name : 'RobotBuilder',
+  name: 'RobotBuilder',
+
   data() {
     return {
       availableParts,
@@ -83,12 +85,15 @@ export default {
     }
   },
 
+  mixins: [createdHookMixin],
+
   computed: {
     headBorderStyle() {
       return {
         border: this.selectedRobot.head.onSale ? '3px solid red' : '3px solid #aaa'
       }
     },
+
     selectedRobot() {
       return {
         head: availableParts.heads[this.selectedHeadIndex],
