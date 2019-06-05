@@ -41,6 +41,10 @@ export default {
     },
   },
 
+  created() {
+    this.emitSelectedPart();
+  },
+
   updated() {
     this.emitSelectedPart();
   },
@@ -62,7 +66,6 @@ export default {
         this.selectedPartIndex,
         this.parts.length,
       );
-
     },
 
   },
