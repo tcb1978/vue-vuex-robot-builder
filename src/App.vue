@@ -4,29 +4,24 @@
       <nav class="nav">
         <ul class="nav-list">
           <li class="nav-item">
-            <img class="logo" src="./assets/build-a-bot-logo.png" alt="Build-A-Bot">
-            Build-A-Bot
+            <router-link class="nav-link" :to="{name: 'Home'}">
+              <img class="logo" src="./assets/build-a-bot-logo.png" alt="Build-A-Bot">
+              Build-A-Bot
+            </router-link>
           </li>
         </ul>
       </nav>
     </header>
     <main class="main">
-      <!--<HomePage />-->
-      <RobotBuilder />
+      <router-view/>
     </main>
   </div>
 </template>
 
 <script>
-// import HomePage from './home/HomePage';
-import RobotBuilder from './build/RobotBuilder';
 
 export default {
   name: 'app',
-  components: {
-    // HomePage
-    RobotBuilder
-  },
 };
 </script>
 
