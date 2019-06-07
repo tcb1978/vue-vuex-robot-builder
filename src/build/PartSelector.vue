@@ -1,6 +1,6 @@
  <template>
   <div class="part" :class="position">
-    <img :src="selectedPart.src" title="arm"/>
+    <img @click="showPartInfo()" :src="selectedPart.src" title="arm"/>
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
     <span class="sale" v-show="selectedPart.onSale">Sale!</span>
@@ -50,6 +50,17 @@ export default {
   },
 
   methods: {
+    showPartInfo() {
+      this.$router.push(
+        {
+          name: 'Parts',
+          params: {
+            id: this.selectedPart.id,
+            partType: this.selectedPart.type,
+          }
+        }
+      );
+    },
     emitSelectedPart() {
       this.$emit('partSelected', this.selectedPart);
     },
@@ -75,10 +86,11 @@ export default {
 
 <style scoped>
 .part {
+  border: 3px solid #aaa;
+  cursor: pointer;
   position: relative;
   width:165px;
   height:165px;
-  border: 3px solid #aaa;
 }
 .sale {
   position: absolute;
