@@ -67,6 +67,11 @@ const routes = [
     name: 'Parts',
     component: PartInfo,
     props: true,
+    // route guard
+    beforeEnter(to, from, next) {
+      const isValidId = Number.isInteger(Number(to.params.id));
+      next(isValidId);
+    },
   },
 ];
 
