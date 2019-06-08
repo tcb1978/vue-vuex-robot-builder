@@ -12,12 +12,20 @@
           <li class="nav-item">
             <router-link class="nav-link" :to="{name: 'Build'}" exact>Build</router-link>
           </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :to="{name: 'BrowseParts'}" exact>Browse Parts</router-link>
+          </li>
         </ul>
       </nav>
     </header>
-    <main class="main">
-      <router-view/>
-    </main>
+    <div class="container">
+      <aside class="aside">
+        <router-view name="sidebar"/>
+      </aside>
+      <main class="main">
+        <router-view name="default"/>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -46,14 +54,15 @@ figure {
 
 .main {
   background-color: #fff;
-  margin: 0 auto;
-  max-width: 1024px;
+  flex: 11;
+  /* margin: 0 auto; */
+  /* max-width: 964px; */
   padding: 30px;
 }
 
 .header {
   background-color: #999;
-  max-width: 1024px;
+  max-width: 1184px;
   margin: 0 auto;
 }
 
@@ -81,5 +90,19 @@ figure {
 
 .router-link-active {
   color: white;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 10px auto 0 auto;
+}
+
+.aside {
+  background-color: #aaa;
+  flex: 1;
+  padding: 30px;
+  min-height: 300px;
+  width: 100%;
 }
 </style>
