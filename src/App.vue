@@ -15,6 +15,10 @@
           <li class="nav-item">
             <router-link class="nav-link" :to="{name: 'BrowseParts'}" exact>Browse Parts</router-link>
           </li>
+          <li class="nav-item cart">
+            <router-link class="nav-link" to="/cart" exact>Cart</router-link>
+            <div class="cart-items">{{ cart.length }}</div>
+          </li>
         </ul>
       </nav>
     </header>
@@ -33,6 +37,11 @@
 
 export default {
   name: 'app',
+  computed: {
+    cart() {
+      return this.$store.state.cart;
+    }
+  }
 };
 </script>
 
@@ -78,6 +87,12 @@ figure {
   border-right: 1px solid #bbb;
 }
 
+.nav-item.cart {
+  border-right: none;
+  margin-left: auto;
+  position: relative;
+}
+
 .logo {
   vertical-align: middle;
   height: 30px;
@@ -104,5 +119,17 @@ figure {
   padding: 30px;
   min-height: 300px;
   width: 100%;
+}
+
+.cart-items {
+  background-color: mediumseagreen;
+  border-radius: 100px;
+  display: inline-block;
+  font-size: 18px;
+  position: absolute;
+  right: -9px;
+  text-align: center;
+  top: -5px;
+  widows: 20px;
 }
 </style>

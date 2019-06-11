@@ -3,7 +3,7 @@
     <h1>Cart</h1>
     <table>
       <thead>
-        <tr>
+        <tr v-if="this.$store.state.cart.length >= 1">
           <th class="robot-title">
             Robot
           </th>
@@ -11,14 +11,19 @@
             Cost
           </th>
         </tr>
+        <tr v-else>
+          <th class="robot-title">
+            You're cart is currently empty.
+          </th>
+        </tr>
       </thead>
       <tbody>
         <tr v-for="(robot, index) in cart" :key="index">
-          <td class="robot-title">
+          <td v-if="robot.head.title" class="robot-title">
             {{robot.head.title}}
           </td>
-          <td class="cost">
-            {{robot.cost}}
+          <td v-if="robot.cost" class="cost">
+            ${{robot.cost}}
           </td>
         </tr>
       </tbody>
@@ -29,6 +34,11 @@
 <script>
 export default {
   name: 'Cart',
+  computed: {
+    cart() {
+      return this.$store.state.cart;
+    }
+  },
 };
 </script>
 
