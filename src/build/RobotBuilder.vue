@@ -33,7 +33,7 @@
     <div class="bottom-row">
       <PartSelector :parts="availableParts.bases" position="bottom" @partSelected="part => selectedRobot.base=part"/>
     </div>
-    <div>
+    <!-- <div>
       <h1>Cart</h1>
       <table>
         <thead>
@@ -49,7 +49,7 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
   </div>
 </template>
 
