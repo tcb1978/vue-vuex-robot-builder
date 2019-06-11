@@ -247,14 +247,15 @@ export default {
   width: 210px;
 }
 
-td, th {
-  padding: 5px;
-  padding-right: 20px;
-  text-align: left;
-}
-.cost {
-  text-align: right;
-}
+// td, th {
+//   padding: 5px;
+//   padding-right: 20px;
+//   text-align: left;
+// }
+// .cost {
+//   text-align: right;
+// }
+
 .sale-border {
   border: 3px solid red;
 }
