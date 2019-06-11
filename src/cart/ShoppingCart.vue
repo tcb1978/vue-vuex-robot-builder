@@ -28,6 +28,32 @@
         </tr>
       </tbody>
     </table>
+    <h2 v-if="cartSaleItems.length >= 1" class="sale-items">You saved money on these robots:</h2>
+    <table>
+      <thead>
+        <tr v-if="cartSaleItems.length >= 1">
+          <th class="robot-title">
+            Robot
+          </th>
+          <th class="cost">
+            Cost
+          </th>
+        </tr>
+        <tr v-else>
+          <th class="robot-title"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(robot, index) in cartSaleItems" :key="index">
+          <td v-if="robot.head.title" class="robot-title">
+            {{robot.head.title}}
+          </td>
+          <td v-if="robot.cost" class="cost">
+            ${{robot.cost}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
  </div>
 </template>
 
@@ -37,6 +63,9 @@ export default {
   computed: {
     cart() {
       return this.$store.state.cart;
+    },
+    cartSaleItems() {
+      return this.$store.getters.cartSaleItems;
     }
   },
 };
@@ -52,5 +81,10 @@ export default {
   }
   .cost {
     text-align: right;
+  }
+  .sale-items {
+    color: red;
+    font-size: 18px;
+    margin-top: 50px;
   }
 </style>
