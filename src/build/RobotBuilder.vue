@@ -63,7 +63,7 @@ export default {
   name: 'RobotBuilder',
 
   created() {
-    this.$store.dispatch('getParts');
+    this.$store.dispatch('robots/getParts');
   },
 
   beforeRouteLeave(to, from, next) {
@@ -117,7 +117,7 @@ export default {
         robot.leftArm.cost +
         robot.torso.cost +
         robot.base.cost;
-        this.$store.dispatch('addRobotToCart', Object.assign({}, robot, { cost }))
+        this.$store.dispatch('robots/addRobotToCart', Object.assign({}, robot, { cost }))
           .then(() => this.$router.push('/cart'));
         this.addedToCart = true;
     },
