@@ -1,13 +1,15 @@
- <template>
+<template>
   <div class="part" :class="position">
     <img @click="showPartInfo()" :src="selectedPart.src" title="arm"/>
     <button @click="selectPreviousPart()" class="prev-selector"></button>
     <button @click="selectNextPart()" class="next-selector"></button>
-    <span class="sale" v-show="selectedPart.onSale">Sale!</span>
+    <span class="sale" v-pin:position.top.right v-show="selectedPart.onSale">Sale!</span>
   </div>
 </template>
 
 <script>
+import pinDirective from '../shared/pin-directive';
+
 const getPreviousValidIndex = (index, length) => {
   const deprecatedIndex = index - 1;
   return deprecatedIndex < 0 ? length - 1 : deprecatedIndex;
@@ -19,6 +21,9 @@ const getNextValidIndex = (index, length) => {
 }
 
 export default {
+  directives : {
+    pin: pinDirective
+  },
   props: {
     parts : {
       type: Array,
@@ -93,9 +98,6 @@ export default {
   height:165px;
 }
 .sale {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
   color: white;
   background-color: red;
   padding: 3px;
