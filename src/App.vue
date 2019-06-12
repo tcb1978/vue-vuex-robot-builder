@@ -34,10 +34,20 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex';
 
 export default {
+
   name: 'app',
   computed: {
+    ...mapState('root', {rootFoo: 'foo'}),
+    ...mapState('robot', {robotFoo: 'foo'}),
+    ...mapState('users', {userFoo: 'foo'}),
+
+    ...mapGetters({rootGetterFoo: 'foo'}),
+    ...mapGetters({robotsGetterFoo: 'foo'}),
+    ...mapGetters({usersGetterFoo: 'foo'}),
+
     cart() {
       return this.$store.state.robots.cart;
     }
