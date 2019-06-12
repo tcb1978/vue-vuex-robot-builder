@@ -3,7 +3,7 @@
     <h1>Cart</h1>
     <table>
       <thead>
-        <tr v-if="this.$store.state.cart.length >= 1">
+        <tr v-if="this.$store.state.robots.cart.length >= 1">
           <th class="robot-title">
             Robot
           </th>
@@ -62,7 +62,7 @@ export default {
   name: 'Cart',
   computed: {
     cart() {
-      return this.$store.state.cart;
+      return this.$store.state.robots.cart;
     },
     cartSaleItems() {
       return this.$store.getters.cartSaleItems;

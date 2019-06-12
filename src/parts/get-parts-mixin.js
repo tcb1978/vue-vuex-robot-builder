@@ -5,7 +5,7 @@ export default {
 
   computed: {
     parts() {
-      return this.$store.state.parts || {
+      return this.$store.state.robotsparts || {
         heads: [],
         arms: [],
         torsos: [],
